@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 urlpatterns = [
@@ -7,6 +7,8 @@ urlpatterns = [
     path('api/credittransactions/', views.CreditTransactionList.as_view(), name='credittransaction-list'),
     path('api/credittransactions/<int:pk>/', views.CreditTransactionDetail.as_view(), name='credittransaction-detail'),
     path('fetch-accounts/', views.fetch_accounts, name='fetch_accounts'),
-    path('signup/', views.signup_view, name='signup'),
+    # path('signup/', views.signup_view, name='signup'),
     path('login/', views.login_view, name='login'),
+    path('accounts/', include('allauth.urls')),
+
 ]

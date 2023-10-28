@@ -1,0 +1,8 @@
+{% if user.is_authenticated %}
+    <div class="credit-score">
+        <h3>Your Credit Score</h3>
+        <p>{{ user.userprofile.credit_score }}</p>
+    </div>
+{% else %}
+    <p>Please log in to see your credit score.</p>
+{% endif %}

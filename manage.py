@@ -3,9 +3,6 @@
 import os
 import sys
 
-from credit_education.api_utils import create_random_account, get_all_accounts
-
-
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'CreditApp.settings')

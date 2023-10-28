@@ -1,35 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fetch Accounts</title>
+    <!-- Adding Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Basic styling for the layout */
+        /* Add any additional styling here */
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 2% 5%;
+            background-color: #f4f6f8;
         }
 
-        #auth-buttons {
-            margin-bottom: 20px;
+        .navbar {
+            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
         }
 
-        button {
-            padding: 10px 15px;
-            margin: 5px;
-            cursor: pointer;
+        .container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
-<body>
-    <div id="auth-buttons">
-        <a href="/signup/"><button>Sign Up</button></a>
-        <a href="/login/"><button>Sign In</button></a>
-    </div>
 
-    <button onclick="fetchAccounts()">Fetch Accounts</button>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Credit Portal</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/accounts/login/">Sign In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/accounts/signup/">Sign Up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Welcome to Credit Portal</h2>
+        <!-- Fetch Accounts Button -->
+        <div class="text-center">
+            <button onclick="fetchAccounts()" class="btn btn-success">Fetch Accounts</button>
+        </div>
+    </div>
 
     <script>
         function fetchAccounts() {
@@ -38,5 +61,11 @@
                 .then(data => alert(data.status));
         }
     </script>
+
+    <!-- Adding Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

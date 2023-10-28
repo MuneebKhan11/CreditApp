@@ -55,5 +55,10 @@ class Account(models.Model):
         return self.firstname + ' ' + self.lastname
 
 
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    credit_score = models.IntegerField(default=0)
+
+
 def __str__(self):
     return self.name

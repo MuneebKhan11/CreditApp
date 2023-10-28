@@ -1,14 +1,23 @@
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from rest_framework import generics
 from .models import UserCreditInfo, CreditTransaction, Account
 from django.contrib.auth.models import User
 from .serializers import UserCreditInfoSerializer, UserSerializer, CreditTransactionSerializer
 from .api_utils import create_random_account
-import json
-from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from .forms import SignUpForm
+import json
+from django.contrib.auth.decorators import login_required
+
+
+@login_required
+def dashboard_view(request):
+    return render(request, 'dashboard.html', {"user": request.user})
+
+
+def home(request):
+    return render(request, 'index.html')
 
 
 class UserCreditInfoList(generics.ListCreateAPIView):
@@ -103,9 +112,7 @@ def login_view(request):
             return redirect('home')
         else:
             # Invalid login credentials
-            return render(request, 'index.html', {'error': 'Invalid username or password'})
-    return render(request, 'index.html')
+            return render(request, 'login.html', {'error': 'Invalid username or password'})
+    return render(request, 'login.html')
 
 
-def home(request):
-    return HttpResponse("Hello!! Capital One, Credit Education!")
