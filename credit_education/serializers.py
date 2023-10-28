@@ -1,7 +1,15 @@
+from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import UserCreditInfo
+from .models import UserCreditInfo, CreditTransaction
 
-class UserCreditInfoSerializer(serializers.ModelSerializer):
+
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = UserCreditInfo
+        model = User
+        fields = ['id', 'username', 'email']
+
+
+class CreditTransactionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CreditTransaction
         fields = '__all__'
