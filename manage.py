@@ -1,7 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/environ python
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+
+from credit_education.api_utils import create_random_account, get_all_accounts
 
 
 def main():
@@ -20,3 +22,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

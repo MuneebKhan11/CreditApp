@@ -34,5 +34,26 @@ class CreditTransaction(models.Model):
         user_credit_info.save()
 
 
+class Account(models.Model):
+    firstname = models.CharField(max_length=100)
+    lastname = models.CharField(max_length=100)
+    creditScore = models.IntegerField()
+    liveBalance = models.BooleanField()
+    accountId = models.CharField(max_length=50, unique=True)
+    phoneNumber = models.CharField(max_length=15)
+    balance = models.DecimalField(max_digits=10, decimal_places=2)
+    creditLimit = models.DecimalField(max_digits=10, decimal_places=2)
+    uci = models.CharField(max_length=50)
+    riskScore = models.IntegerField()
+    state = models.CharField(max_length=20)
+    currencyCode = models.CharField(max_length=10)
+    email = models.EmailField()
+    productType = models.CharField(max_length=20)
+    homeAddress = models.TextField()
+
+    def __str__(self):
+        return self.firstname + ' ' + self.lastname
+
+
 def __str__(self):
     return self.name
