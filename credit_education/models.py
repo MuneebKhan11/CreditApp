@@ -26,11 +26,12 @@ class CreditTransaction(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
+        user_credit_info = self.user.usercreditinfo
         if self.transaction_type == "DEBIT":
-            self.user.usercreditinfo.credit_score -= self.amount
+            user_credit_info.current_credit_score -= self.amount
         else:
-            self.user.usercreditinfo.credit_score += self.amount
-            self.user.usercreditinfo.save()
+            user_credit_info.current_credit_score += self.amount
+        user_credit_info.save()
 
 
 def __str__(self):

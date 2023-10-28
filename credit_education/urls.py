@@ -2,8 +2,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('api/usercreditinfo/', views.UserCreditInfoList.as_view(), name='usercreditinfo-list-create'),
-    path('api/usercreditinfo/<int:pk>/', views.UserCreditInfoDetail.as_view(), name='usercreditinfo-detail'),
-    path('api/users/', views.UserListCreate.as_view(), name='user-list-create'),
-    path('api/transactions/', views.CreditTransactionListCreate.as_view(), name='transaction-list-create'),
+    path('', views.home, name='home'),
+    path('api/usercreditinfo/', views.UserCreditInfoListCreate.as_view(), name='usercreditinfo-list-create'),
+    path('api/credittransactions/', views.CreditTransactionList.as_view(), name='credittransaction-list'),
+    path('api/credittransactions/<int:pk>/', views.CreditTransactionDetail.as_view(), name='credittransaction-detail'),
 ]

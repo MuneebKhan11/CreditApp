@@ -7,3 +7,5 @@
     Update: By making a PUT or PATCH request to http://127.0.0.1:8000/credit/api/usercreditinfo/1/, you can update the entry with ID 1.
 
     Delete: By making a DELETE request to http://127.0.0.1:8000/credit/api/usercreditinfo/1/, you can delete the entry with ID 1.
+
+    - You can also access the API by using the browsable API at http://

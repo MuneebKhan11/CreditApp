@@ -9,7 +9,15 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'email']
 
 
+class UserCreditInfoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserCreditInfo
+        fields = '__all__'
+
+
 class CreditTransactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = CreditTransaction
         fields = '__all__'
+
+
