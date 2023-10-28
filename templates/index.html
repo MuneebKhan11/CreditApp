@@ -1,18 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fetch Accounts</title>
+    <style>
+        /* Basic styling for the layout */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 2% 5%;
+        }
+
+        #auth-buttons {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
+    <div id="auth-buttons">
+        <a href="/signup.html/"><button>Sign Up</button></a>
+        <a href="/login/"><button>Sign In</button></a>
+    </div>
+
     <button onclick="fetchAccounts()">Fetch Accounts</button>
 
     <script>
         function fetchAccounts() {
-    fetch('http://127.0.0.1:8000/fetch-accounts/')
-    .then(response => response.json())
-    .then(data => alert(data.status));
-}
-
+            fetch('http://127.0.0.1:8000/fetch-accounts/')
+                .then(response => response.json())
+                .then(data => alert(data.status));
+        }
     </script>
 </body>
 </html>

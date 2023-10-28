@@ -6,6 +6,9 @@ from django.contrib.auth.models import User
 from .serializers import UserCreditInfoSerializer, UserSerializer, CreditTransactionSerializer
 from .api_utils import create_random_account
 import json
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from .forms import SignUpForm
 
 
 class UserCreditInfoList(generics.ListCreateAPIView):
@@ -73,6 +76,35 @@ def fetch_accounts(request):
         return JsonResponse({"status": "Accounts fetched and saved successfully!"})
     except Exception as e:
         return JsonResponse({"status": f"Error: {str(e)}"}, status=500)
+
+
+def signup_view(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('home')
+    else:
+        form = SignUpForm()
+    return render(request, 'signup.html', {'form': form})
+
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            # Invalid login credentials
+            return render(request, 'index.html', {'error': 'Invalid username or password'})
+    return render(request, 'index.html')
 
 
 def home(request):
